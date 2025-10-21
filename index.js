@@ -34,7 +34,13 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(expressSession({
-    secret: process.env.SESSION_SECRET || 'keyboard cat'
+    secret: process.env.SESSION_SECRET || 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
 }));
 app.use(flash());
 app.use((req, res, next) => {
@@ -45,9 +51,8 @@ app.use((req, res, next) => {
     };
     next();
 });
-global.loggedIn = null;
 app.use((req,res,next)=>{
-    loggedIn = req.session.userId;
+    res.locals.loggedIn = req.session.userId;
     next();
 });
 
@@ -75,6 +80,12 @@ app.post('/users/login',redirectIfAuthenticatedMiddleware,loginUserController);
 app.get('/auth/logout',logoutController);
 
 app.use((req,res)=>res.render('notfound'));
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!' });
+});
 
 // Export the app for Vercel serverless functions
 module.exports = app;
