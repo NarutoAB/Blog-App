@@ -76,12 +76,18 @@ app.get('/auth/logout',logoutController);
 
 app.use((req,res)=>res.render('notfound'));
 
-let port = process.env.PORT;
-if(port == null || port ==""){
-    port = 4000;
-};
+// Export the app for Vercel serverless functions
+module.exports = app;
 
-app.listen(port,()=>{
-    console.log('App listening on port 4000');
-});
+// Only start the server if not in Vercel environment
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    let port = process.env.PORT;
+    if(port == null || port ==""){
+        port = 4000;
+    }
+    
+    app.listen(port,()=>{
+        console.log(`App listening on port ${port}`);
+    });
+}
 
