@@ -1,0 +1,70 @@
+{
+    "title": "Clean Blog",
+    "name": "startbootstrap-clean-blog",
+    "version": "6.0.9",
+    "scripts": {
+        "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets",
+        "build:assets": "node scripts/build-assets.js",
+        "build:pug": "node scripts/build-pug.js",
+        "build:scripts": "node scripts/build-scripts.js",
+        "build:scss": "node scripts/build-scss.js",
+        "clean": "node scripts/clean.js",
+        "start": "nodemon index.js",
+        "start:debug": "npm run build && node scripts/start-debug.js"
+    },
+    "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
+    "keywords": [
+        "css",
+        "sass",
+        "html",
+        "responsive",
+        "theme",
+        "template"
+    ],
+    "homepage": "https://startbootstrap.com/theme/clean-blog",
+    "bugs": {
+        "url": "https://github.com/StartBootstrap/startbootstrap-clean-blog/issues",
+        "email": "feedback@startbootstrap.com"
+    },
+    "license": "MIT",
+    "engines":{
+        "node":"22.17.0"
+    },
+    "author": "Start Bootstrap",
+    "contributors": [
+        {
+            "name": "David Miller",
+            "url": "https://davidmiller.io/"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/StartBootstrap/startbootstrap-clean-blog.git"
+    },
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "bootstrap": "5.2.3",
+        "connect-flash": "^0.1.1",
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "express-fileupload": "^1.5.2",
+        "express-session": "^1.18.2",
+        "mongodb": "^6.20.0",
+        "mongoose": "^7.8.7",
+        "mongoose-unique-validator": "^4.0.1",
+        "nodemon": "^3.1.10"
+    },
+    "devDependencies": {
+        "autoprefixer": "10.4.14",
+        "browser-sync": "2.29.1",
+        "chokidar": "3.5.3",
+        "concurrently": "6.3.0",
+        "postcss": "8.4.21",
+        "prettier": "2.8.6",
+        "pug": "3.0.2",
+        "sass": "1.60.0",
+        "shelljs": "0.8.5",
+        "upath": "2.0.1"
+    },
+    "main": "index.js"
+}
