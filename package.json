@@ -1,16 +1,11 @@
 {
-    "title": "Clean Blog",
-    "name": "startbootstrap-clean-blog",
+    "name": "blog-app",
     "version": "6.0.9",
     "scripts": {
-        "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets",
-        "build:assets": "node scripts/build-assets.js",
-        "build:pug": "node scripts/build-pug.js",
-        "build:scripts": "node scripts/build-scripts.js",
-        "build:scss": "node scripts/build-scss.js",
-        "clean": "node scripts/clean.js",
-        "start": "nodemon index.js",
-        "start:debug": "npm run build && node scripts/start-debug.js"
+        "build": "echo 'Build completed'",
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "vercel-build": "echo 'Vercel build completed'"
     },
     "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
     "keywords": [
@@ -27,8 +22,8 @@
         "email": "feedback@startbootstrap.com"
     },
     "license": "MIT",
-    "engines":{
-        "node":"22"
+    "engines": {
+        "node": "22"
     },
     "author": "Start Bootstrap",
     "contributors": [
@@ -51,14 +46,14 @@
         "express-session": "^1.18.2",
         "mongodb": "^6.20.0",
         "mongoose": "^7.8.7",
-        "mongoose-unique-validator": "^4.0.1",
-        "nodemon": "^3.1.10"
+        "mongoose-unique-validator": "^4.0.1"
     },
     "devDependencies": {
         "autoprefixer": "10.4.14",
         "browser-sync": "2.29.1",
         "chokidar": "3.5.3",
         "concurrently": "6.3.0",
+        "nodemon": "^3.1.10",
         "postcss": "8.4.21",
         "prettier": "2.8.6",
         "pug": "3.0.2",
