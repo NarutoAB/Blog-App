@@ -22,7 +22,7 @@ const flash = require('connect-flash');
 
 
 // database connect
-const URI = 'mongodb+srv://Sam:Sam371@cluster0.yuw2ucz.mongodb.net/BlogApp?retryWrites=true&w=majority&appName=Cluster0';
+const URI = process.env.MONGODB_URI || 'mongodb+srv://Sam:Sam371@cluster0.yuw2ucz.mongodb.net/BlogApp?retryWrites=true&w=majority&appName=Cluster0';
 mongoose.connect(URI)
 .then(()=>console.log('mongoDB connected.'))
 .catch(err=>console.log(err.message));
@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine','ejs');
 app.use(express.static('public'));
 app.use(expressSession({
-    secret: 'keyboard cat'
+    secret: process.env.SESSION_SECRET || 'keyboard cat'
 }));
 app.use(flash());
 app.use((req, res, next) => {
